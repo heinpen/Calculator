@@ -17,6 +17,7 @@ const config = {
   devtool: 'eval-source-map',
   output: {
     path: path.resolve(__dirname, dist),
+    clean: true,
   },
   devServer: {
     static: {
@@ -27,7 +28,7 @@ const config = {
   plugins: [
     new MiniCssExtractPlugin(),
     new ESLintPlugin({
-      extensions: ['jsx', 'mjs', 'js'],
+      extensions: ['jsx', 'mjs', 'js', 'ts', 'tsx'],
       failOnError: true,
       fix: false,
       emitError: true,
@@ -45,37 +46,63 @@ const config = {
   },
   module: {
     rules: [
-      // css rules
+      // css
       {
         test: /\.css$/i,
+        exclude: /node_modules/,
         use: [stylesHandler, 'css-loader', 'postcss-loader'],
       },
 
-      // img rules
+      // scss
+      {
+        test: /\.s[ac]ss$/i,
+        exclude: /node_modules/,
+        use: [
+          // Creates `style` nodes from JS strings
+          'style-loader',
+          // Translates CSS into CommonJS
+          'css-loader',
+          // Compiles Sass to CSS
+          'sass-loader',
+        ],
+      },
+
+      // img
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        exclude: /node_modules/,
         type: 'asset/resource',
         generator: {
           filename: 'images/[name][ext]',
         },
       },
 
-      // html rules
+      // html
       {
         test: /\.html$/i,
+        exclude: /node_modules/,
         loader: 'html-loader',
       },
 
-      // font rules
+      // font
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        exclude: /node_modules/,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[name][ext]',
         },
       },
 
-      // babel rules
+      // ts
+      {
+        test: /\.tsx?$/,
+        exclude: /node_modules/,
+        use: 'ts-loader',
+
+      },
+
+      // babel
       {
         test: /\.m?jsx?$/,
         exclude: /(node_modules|bower_components)/,

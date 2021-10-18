@@ -32,6 +32,7 @@
     "linebreak-style": 0,
     "import/extensions": "off",
     "lines-between-class-members": ["error", "always"],
-    "no-param-reassign": ["error", { "props": false }]
+    "no-param-reassign": ["error", { "props": false }],
+    "max-len": ["error", { "ignoreComments": true }]
   }
 }

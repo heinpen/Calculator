@@ -1,5 +1,5 @@
 {
-  "parser": "@babel/eslint-parser",
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 8,
     "sourceType": "module",
@@ -33,6 +33,12 @@
     "import/extensions": "off",
     "lines-between-class-members": ["error", "always"],
     "no-param-reassign": ["error", { "props": false }],
-    "max-len": ["error", { "ignoreComments": true }]
+    "max-len": ["error", { "ignoreComments": true }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".tsx", ".jsx"]
+      }
+    ]
   }
 }

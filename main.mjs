@@ -1,1 +1,1 @@
-import './src/scripts/index.jsx';
+import './src/index.jsx';

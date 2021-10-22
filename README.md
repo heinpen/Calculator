@@ -1,1 +1,1 @@
-# [Calculator](https://salihub.github.io/Websites/Calculator/dist-prod/index.html)
+# [Calculator](https://salihub.github.io/Calculator/dist-prod/index.html)

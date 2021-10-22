@@ -94,32 +94,11 @@ const config = {
         },
       },
 
-      // ts
-      {
-        test: /\.tsx?$/,
-        exclude: /node_modules/,
-        use: 'ts-loader',
-
-      },
-
       // babel
       {
-        test: /\.m?jsx?$/,
+        test: /\.(js|jsx|tsx|ts|mjs)$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              '@babel/preset-env',
-              [
-                '@babel/preset-react',
-                {
-                  runtime: 'automatic',
-                },
-              ],
-            ],
-          },
-        },
+        use: 'babel-loader',
       },
       // Add your rules for custom modules here
       // Learn more about loaders from https://webpack.js.org/loaders/

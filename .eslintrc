@@ -8,7 +8,11 @@
       "presets": ["@babel/preset-react"]
     }
   },
-  "extends": ["airbnb", "react-app", "plugin:react-hooks/recommended"],
+  "extends": ["airbnb", "react-app", 
+  "plugin:react-hooks/recommended",  
+  "plugin:import/errors",
+  "plugin:import/warnings",
+  "plugin:import/typescript"],
   "env": {
     "browser": true,
     "node": true

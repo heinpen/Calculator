@@ -8,7 +8,8 @@
     "build:prod": "webpack --mode=production --node-env=production",
     "watch": "webpack --watch",
     "serve": "webpack serve",
-    "dev": "npm-run-all build:dev --parallel watch serve"
+    "dev": "npm-run-all build:dev --parallel watch serve",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.15.5",
@@ -46,6 +47,7 @@
   },
   "dependencies": {
     "autoprefixer": "^10.3.6",
+    "jest": "^28.1.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "uuid": "^8.3.2"

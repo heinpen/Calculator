@@ -1,11 +1,11 @@
 import { useState, useRef } from 'react';
 import './App.scss';
+import getNumber from '../../utils/getNumber';
+import removeSymbols from '../../utils/removeSymbols';
 
 const operands = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '.'];
 const operators = ['/', '×', '-', '+', '='];
 const extraSymbols = ['C', 'CA', '%'];
-
-// let operatorsInARow: number = 0;
 
 function App() {
   const [output, setOutput] = useState<number | string>(0);
@@ -45,32 +45,6 @@ function App() {
         {sym}
       </button>
     );
-  }
-
-  function removeSymbols(string: string) {
-    // If last symbol in string equals space then delete three symbols,
-    // because it is operator(Example of operator: ' + ').
-    if (string.slice(-1) === ' ') {
-      return string.slice(0, -3);
-    }
-    // Set output to zero if user removes last symbol.
-    if (string.length === 1) {
-      return 0;
-    }
-    // Remove one symbol.
-    return string.slice(0, -1);
-  }
-
-  function getNumber(string: string): number | boolean {
-    // Create array from string without spaces.
-    const array = string.split(' ');
-
-    // Check if last symbol operator.
-    if (operatorsInARow.current === 0 && array.length >= 1) {
-      const lastSymbol = array[array.length - 1];
-      return Number(lastSymbol) / 100;
-    }
-    return false;
   }
 
   function handleOperatorClick(symbol: string) {
@@ -114,7 +88,7 @@ function App() {
         break;
       }
       case '%': {
-        const number = getNumber(String(output));
+        const number = getNumber(operatorsInARow, String(output));
         if (number) {
           operatorsInARow.current = 0;
           // eslint-disable-next-line no-eval
